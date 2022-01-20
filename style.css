@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    font-family: 'Architects Daughter', Arial, Helvetica, sans-serif;
+}
+
+.gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 170px);
+    grid-auto-rows: 170px;
+    width: 500px;
+    height: 500px;
+    cursor: pointer;
+}
+
+.gameboard p {
+    font-size: 55px;
+}
+
+.topLeft, .topMiddle,
+.middle, .middleLeft {
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.topRight, .middleRight{
+    border-bottom: 2px solid black;
+}
+
+.bottomLeft, .bottomMiddle {
+    border-right: 2px solid black;
+}
+
+.topLeft, .topMiddle, .topRight,
+.middleLeft, .middle, .middleRight,
+.bottomLeft, .bottomMiddle, .bottomRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstLoad {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstLoad h1 {
+    font-size: 36px;
+}
+
+.firstLoad p {
+    margin: 0.6vh;
+    font-size: 24px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+#username {
+    width: 200px;
+    align-self: center;
+    margin-top: 5px;
+}
+
+#selectLetter {
+    width: 50px;
+    align-self: center;
+    margin-top: 5px;
+}
+
+.submitButton {
+    margin-top: 1vh;
+    align-self: center;
+    width: 75px;
+}
+
+label {
+    font-size: 22px;
+    align-self: center;
+}

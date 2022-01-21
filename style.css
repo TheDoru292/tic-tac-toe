@@ -66,10 +66,10 @@ form {
     width: 75px;
 }
 
-/* .footer {
+.footer {
     align-self: center;
     margin-top: auto;
-} */
+}
 
 input, select {
     margin-bottom: 15px;

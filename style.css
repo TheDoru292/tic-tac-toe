@@ -16,23 +16,8 @@ body {
     font-size: 55px;
 }
 
-.topLeft, .topMiddle,
-.middle, .middleLeft {
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-}
-
-.topRight, .middleRight{
-    border-bottom: 2px solid black;
-}
-
-.bottomLeft, .bottomMiddle {
-    border-right: 2px solid black;
-}
-
-.topLeft, .topMiddle, .topRight,
-.middleLeft, .middle, .middleRight,
-.bottomLeft, .bottomMiddle, .bottomRight {
+.gameboard div {
+    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;

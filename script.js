@@ -97,13 +97,13 @@ var displayController = (function (doc) {
         }
     }
 
-    const _createPlayers = function(name, sign) {
+    const _createPlayers = function(name, name2, sign) {
         player = players(name, sign);
         player.setTurn(true);
         if(player.checkSign() === "X") {
-            playerTwo = players("playerTwo", "O");
+            playerTwo = players(name2, "O");
         } else if(player.checkSign() === "O") {
-            playerTwo = players("playerTwo", "X");
+            playerTwo = players(name2, "X");
         } else {
             return console.log("Something went wrong.");
         }
@@ -121,10 +121,11 @@ var displayController = (function (doc) {
         const firstLoad = doc.querySelector(".firstLoad");
 
         firstLoad.addEventListener("submit", (e) => {
-            const username = doc.getElementById("username").value;
+            const firstPlayerUsername = doc.getElementById("firstPlayerUsername").value;
+            const secondPlayerUsername = doc.getElementById("secondPlayerUsername").value;
             const letter = doc.getElementById("selectLetter").value;
 
-            _createPlayers(username, letter);
+            _createPlayers(firstPlayerUsername, secondPlayerUsername, letter);
 
             _createGameBoard();
 

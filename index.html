@@ -11,17 +11,20 @@
             <h1>Welcome!</h1>
             <p>This is just a simple welcome message so I can get things working lol.</p>
             <form class="firstLoadForm">
-                <label for="username">What would you like your username to be?</label>
-                <input type="text" id="username"required>
+                <label for="firstPlayerUsername">First player, enter your name!</label>
+                <input type="text" id="firstPlayerUsername" required>
                 <label for="selectLetter">What would you like to use?</label>
                 <select id="selectLetter">
                     <option value="X">X</option>
                     <option value="O">O</option>
                 </select>
+                <label for="secondPlayerUsername">Second player, enter your name!</label>
+                <input type="text" id="secondPlayerUsername" required>
                 <input class="submitButton" type="submit" value="Submit">
             </form>
         </div>
         <div class="game"></div>
+        <!-- <div class="footer"><p>Made by TheDoru</p></div> -->
         <script src="script.js" defer></script>
     </body>
 </html>

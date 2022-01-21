@@ -1,6 +1,9 @@
 body {
     margin: 0;
     font-family: 'Architects Daughter', Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .gameboard {
@@ -36,6 +39,7 @@ body {
 
 .firstLoad p {
     margin: 0.6vh;
+    margin-bottom: 2vh;
     font-size: 24px;
 }
 
@@ -44,7 +48,7 @@ form {
     flex-direction: column;
 }
 
-#username {
+#firstPlayerUsername, #secondPlayerUsername {
     width: 200px;
     align-self: center;
     margin-top: 5px;
@@ -57,12 +61,22 @@ form {
 }
 
 .submitButton {
-    margin-top: 1vh;
+    margin-top: 0.5vh;
     align-self: center;
     width: 75px;
 }
 
+/* .footer {
+    align-self: center;
+    margin-top: auto;
+} */
+
+input, select {
+    margin-bottom: 15px;
+}
+
 label {
     font-size: 22px;
+    margin-bottom: 3px;
     align-self: center;
 }

@@ -6,6 +6,21 @@ body {
     min-height: 100vh;
 }
 
+input, select {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 22px;
+    margin-bottom: 3px;
+    align-self: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 .gameboard {
     display: grid;
     grid-template-columns: repeat(3, 170px);
@@ -43,11 +58,6 @@ body {
     font-size: 24px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
 #firstPlayerUsername, #secondPlayerUsername {
     width: 200px;
     align-self: center;
@@ -69,14 +79,9 @@ form {
 .footer {
     align-self: center;
     margin-top: auto;
-}
-
-input, select {
-    margin-bottom: 15px;
-}
-
-label {
     font-size: 22px;
-    margin-bottom: 3px;
-    align-self: center;
+}
+
+.footer p {
+    margin: 1vh;
 }

@@ -1,47 +1,87 @@
 var gameBoard = (function () {
-    const board = [["topLeft", "notInUse"], ["topMiddle", "notInUse"], ["topRight", "notInUse"],
-                   ["middleLeft", "notInUse"], ["middle", "notInUse"], ["middleRight", "notInUse"],
-                   ["bottomLeft", "notInUse"], ["bottomMiddle", "notInUse"], ["bottomRight", "notInUse"]];
-    
-    const checkIfInUse = function(cell) {
-        let string = cell;   
-    }
+    const board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     
     return {
         board,
-        checkIfInUse
     }
 })();
 
 var displayController = (function (doc) {
 
-    // Reminder: Make all the fuctions work for NPC/Player.
+    // Reminder: Make all the fuctions work for playerTwo/Player.
     var player;
-    var npc;
+    var playerTwo;
+    let functionUsed = 0;
     const gameBoardArray = gameBoard.board;
+    const board = doc.createElement("div");
+
+    function determineWinner() {
+        if(gameBoardArray[0] == player.checkSign() && gameBoardArray[1] == player.checkSign() && gameBoardArray[2] == player.checkSign() ||
+            gameBoardArray[3] == player.checkSign() && gameBoardArray[4] == player.checkSign() && gameBoardArray[5] == player.checkSign() ||
+            gameBoardArray[6] == player.checkSign() && gameBoardArray[7] == player.checkSign() && gameBoardArray[8] == player.checkSign() ||
+            gameBoardArray[0] == player.checkSign() && gameBoardArray[3] == player.checkSign() && gameBoardArray[6] == player.checkSign() ||
+            gameBoardArray[1] == player.checkSign() && gameBoardArray[4] == player.checkSign() && gameBoardArray[7] == player.checkSign() ||
+            gameBoardArray[2] == player.checkSign() && gameBoardArray[5] == player.checkSign() && gameBoardArray[8] == player.checkSign() ||
+            gameBoardArray[0] == player.checkSign() && gameBoardArray[4] == player.checkSign() && gameBoardArray[8] == player.checkSign() ||
+            gameBoardArray[2] == player.checkSign() && gameBoardArray[4] == player.checkSign() && gameBoardArray[6] == player.checkSign()) {
+                console.log(`${player.getName()} won!`);
+                player.setTurn(false);
+                playerTwo.setTurn(false);
+        } else if(gameBoardArray[0] == playerTwo.checkSign() && gameBoardArray[1] == playerTwo.checkSign() && gameBoardArray[2] == playerTwo.checkSign() ||
+            gameBoardArray[3] == playerTwo.checkSign() && gameBoardArray[4] == playerTwo.checkSign() && gameBoardArray[5] == playerTwo.checkSign() ||
+            gameBoardArray[6] == playerTwo.checkSign() && gameBoardArray[7] == playerTwo.checkSign() && gameBoardArray[8] == playerTwo.checkSign() ||
+            gameBoardArray[0] == playerTwo.checkSign() && gameBoardArray[3] == playerTwo.checkSign() && gameBoardArray[6] == playerTwo.checkSign() ||
+            gameBoardArray[1] == playerTwo.checkSign() && gameBoardArray[4] == playerTwo.checkSign() && gameBoardArray[7] == playerTwo.checkSign() ||
+            gameBoardArray[2] == playerTwo.checkSign() && gameBoardArray[5] == playerTwo.checkSign() && gameBoardArray[8] == playerTwo.checkSign() ||
+            gameBoardArray[0] == playerTwo.checkSign() && gameBoardArray[4] == playerTwo.checkSign() && gameBoardArray[8] == playerTwo.checkSign() ||
+            gameBoardArray[2] == playerTwo.checkSign() && gameBoardArray[4] == playerTwo.checkSign() && gameBoardArray[6] == playerTwo.checkSign()) {
+                console.log(`${playerTwo.getName()} won!`);
+                player.setTurn(false);
+                playerTwo.setTurn(false);
+        } else {
+            if(functionUsed == 9) {
+                console.log("Draw!");
+            }
+        }
+    }
+
+    board.addEventListener("click", (e) => {
+
+        determineWinner();
+
+    })
+
+    function _putInArray(cell, user) {
+        functionUsed += 1;
+        for(let i = 0; gameBoardArray.length > i; i++) {
+            if(gameBoardArray[i] == cell.className) {
+                gameBoardArray.splice(gameBoardArray[i], 1, user.checkSign());
+            }
+        }
+    }
 
     function _putItem(cell, user) {
         const item = doc.createElement("p");
         item.textContent = user.checkSign();
         cell.append(item);
+        _putInArray(cell, user);
     }
 
-    function _addEventListenerToGameboard(cell, clicked) {
+    function _addEventListenerToGameboard(cell, clicked, ) {
         cell.addEventListener("click", (e) => {
             if(clicked === false && player.checkTurn() === true) {
                 _putItem(cell, player);
                 clicked = true;
                 player.setTurn(false);
-                npc.setTurn(true);
-            } else if(clicked === false && npc.checkTurn() === true) {
-                _putItem(cell, npc);
+                playerTwo.setTurn(true);
+            } else if(clicked === false && playerTwo.checkTurn() === true) {
+                _putItem(cell, playerTwo);
                 clicked = true;
-                npc.setTurn(false);
+                playerTwo.setTurn(false);
                 player.setTurn(true);
             } else {
                 // Add a box where it tells the user/player the errors, like this one. 
                 // Error message: "You already put something. It's {player}'s turn."
-                console.log("STOP THIS RIGHT THERE");
             }
         });
     }
@@ -60,20 +100,17 @@ var displayController = (function (doc) {
     const _createPlayers = function(name, sign) {
         player = players(name, sign);
         player.setTurn(true);
-        console.log(player.getName());
         if(player.checkSign() === "X") {
-            npc = players("NPC", "O");
-        } else if(player.checkSign === "O") {
-            npc = players("NPC", "X");
+            playerTwo = players("playerTwo", "O");
+        } else if(player.checkSign() === "O") {
+            playerTwo = players("playerTwo", "X");
         } else {
-            console.log(sign);
             return console.log("Something went wrong.");
         }
     }
 
     const _createGameBoard = function() {
         const content = doc.querySelector(".game");
-        const board = doc.createElement("div");
         board.className = "gameboard";
         content.append(board);
 

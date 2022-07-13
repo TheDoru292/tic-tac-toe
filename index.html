@@ -1,30 +1,57 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Tic Tac Toe!</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter">
-    </head>
-    <body>
-        <div class="firstLoad">
-            <h1>Welcome!</h1>
-            <p>This is just a simple welcome message so I can get things working lol.</p>
-            <form class="firstLoadForm">
-                <label for="firstPlayerUsername">First player, enter your name!</label>
-                <input type="text" id="firstPlayerUsername" required>
-                <label for="selectLetter">What would you like to use?</label>
-                <select id="selectLetter">
-                    <option value="X">X</option>
-                    <option value="O">O</option>
-                </select>
-                <label for="secondPlayerUsername">Second player, enter your name!</label>
-                <input type="text" id="secondPlayerUsername" required>
-                <input class="submitButton" type="submit" value="Submit">
-            </form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="box">
+        <form class="landing">
+            <h1>Welcome! Would you care for a game of Tic Tac Toe?</h1>
+            <div class="grid">
+                <div class="player1">
+                    <div class="avatar"></div>
+                    <input type="text" name="first-player" id="first-player" value="player1">    
+                    <span class="line"></span>
+                </div>
+                
+                <div class="vs">
+                    <h1>vs</h1>
+                </div>
+
+                <div class="player2">
+                    <div class="avatar"></div>
+                    <input type="text" name="second-player" id="second-player" value="player2">
+                    <span class="line"></span>
+                </div>
+            </div>
+            <div class="something">
+                <p>
+                    <label for="choose-ai">Do you want to play against AI instead?</label>
+                    <input type="checkbox" name="choose-ai" id="choose-ai">
+                </p>
+                <button type="submit">Start Game!</button>
+            </div>
+        </form>
+        <div class="game">
+            <div class="players">
+
+            </div>
+            <div class="gameboard">
+                
+            </div>
+            <div class="buttons">
+                <button class="reset">Reset</button>
+            </div>
         </div>
-        <div class="game"></div>
-        <div class="footer"><p>Made by TheDoru</p></div>
-        <script src="script.js" defer></script>
-    </body>
+        <div class="game-end">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>

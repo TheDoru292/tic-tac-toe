@@ -36,7 +36,6 @@ const game = (() => {
 
     const form = document.querySelector("form");
 
-    const body = document.querySelector("body");
     const firstPlayer = document.querySelector("#first-player");
     const secondPlayer = document.querySelector("#second-player");
     const aiSelection = document.querySelector("#choose-ai");
@@ -215,7 +214,7 @@ const game = (() => {
         yesButton.addEventListener("click", e => _yesClicked());
         
         noButton.addEventListener("click", e => {
-            body.textContent = '';
+            document.body.textContent = '';
         });
 
         gameEndButtons.append(yesButton, noButton);
